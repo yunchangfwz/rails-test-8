@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :email,               presence: true
   
   before_validation :set_name
+  
+  has_many :posts
 
   protected
   def set_name
