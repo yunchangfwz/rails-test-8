@@ -5,4 +5,5 @@
     .content
       h5 Description
       p = @post.content
-    .comment
+    .comments-wrap
+      = render :partial => 'comments/comment', :locals => {object: @post}

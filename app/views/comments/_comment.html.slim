@@ -1,0 +1,14 @@
+.comments-comment
+  h3 Comments
+  .comments
+    - @comments.each do |comment|
+      p = "#{comment.user.name} : #{comment.message}"
+  =  form_tag '', class: 'comment_form' do
+    = text_area_tag 'message'
+    = button_tag('Post', type: 'button')
+    = hidden_field_tag 'type', "#{object.class.name}"
+    = hidden_field_tag 'id', "#{object.id}"
+javascript:
+  $(document).ready(function(){
+    comment()
+  })
