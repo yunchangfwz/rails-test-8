@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources  :posts
   resources  :comments, only: [:create]
+  resources  :users do
+    resources :profiles, only: [:index]
+  end
 end

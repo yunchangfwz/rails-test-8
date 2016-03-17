@@ -1,0 +1,9 @@
+#profiles-index-container
+  .container
+    .row
+      .col-md-3
+        = image_tag(@user.avatar)
+      .col-md-9
+        h1 = "#{@user.name} 's profile "
+        .comments-wrap
+          = render :partial => 'comments/comment', :locals => {object: @user}

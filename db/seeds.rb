@@ -2,6 +2,12 @@ User.destroy_all
 ActiveRecord::Base.connection.execute(
   "ALTER SEQUENCE users_id_seq RESTART WITH 1"
 )
+
+Profile.destroy_all
+ActiveRecord::Base.connection.execute(
+  "ALTER SEQUENCE profiles_id_seq RESTART WITH 1"
+)
+
 file_path     = "#{Rails.root}/app/assets/images/avatar.jpg"
 yunchang = User.create!(first_name: 'Yunchang', 
             last_name: 'Diao', 
