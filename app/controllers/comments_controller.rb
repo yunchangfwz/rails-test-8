@@ -11,11 +11,12 @@ class CommentsController < ApplicationController
 
   def profile_comment
     @user = User.find(object_id)
-    comment = @user.comments.new(comment_params)
+    user_profile = @user.profile
+    comment = user_profile.comments.new(message: params[:message], user_id: current_user.id )
     if comment.save
-      return @user.comments.joins(:user).to_json()
+      return  user_profile.reload.comments.to_json(include: :user)
     else
-      return "error"
+      return comment.errors.full_messages.to_json
     end
   end
   

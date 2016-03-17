@@ -12,12 +12,14 @@ var comment = function() {
               message: message
             },
       success: function(data){
-        if (data!= 'error') {
+        if (data!= '') {
           $('.comments').html('')
           data.forEach(function(comment) {
            var html = "<p>" + comment.user.name + " : " + comment.message + " </p>"
             $('.comments').append(html)
           })
+        }else {
+          alert(data)
         }
         
       }

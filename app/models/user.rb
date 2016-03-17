@@ -10,9 +10,17 @@ class User < ActiveRecord::Base
   before_validation :set_name
   
   has_many :posts
+  has_many :comments
+  has_one  :profile
+
+  after_create :create_profile
 
   protected
   def set_name
     self.name = "#{first_name} #{last_name}"
+  end
+
+  def create_profile
+    Profile.create(user_id: self.id)
   end
 end
