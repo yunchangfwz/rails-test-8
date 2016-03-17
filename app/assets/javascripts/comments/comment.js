@@ -12,16 +12,14 @@ var comment = function() {
               message: message
             },
       success: function(data){
-        if (data!= '') {
-          $('.comments').html('')
-          data.forEach(function(comment) {
-           var html = "<p>" + comment.user.name + " : " + comment.message + " </p>"
-            $('.comments').append(html)
-          })
-        }else {
-          alert(data)
-        }
-        
+        $('.comments').html('')
+        data.forEach(function(comment) {
+         var html = "<p>" + comment.user.name + " : " + comment.message + " </p>"
+          $('.comments').append(html)
+        })
+      },
+      error: function(data){ 
+        alert(data.responseText)
       }
     })
   })

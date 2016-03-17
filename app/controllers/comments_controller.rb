@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    if params[:type] == "Post"
+    if params[:type] == Post.name
       render json: post_comment
     else
       render json: profile_comment
